@@ -1,4 +1,4 @@
-import { parseSearch } from "@/utils/url";
+import { parseSearchAndQueryParams } from "@/utils/url";
 import { useLocation, globalHistory, navigate } from "@reach/router";
 import { useMemo } from "react";
 import { useLocalStorage } from "./useLocalStorage";
@@ -8,7 +8,10 @@ export const useRouter = () => {
   const { pathname, search, ...rest } = useLocation();
   const [locale] = useLocalStorage("locale", DEFAULT_LOCALE);
 
-  const query = useMemo(() => parseSearch(search), [search]);
+  const query = useMemo(
+    () => parseSearchAndQueryParams(search, pathname),
+    [search, pathname]
+  );
 
   /**
    * @typedef {Object} Events
