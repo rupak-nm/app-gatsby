@@ -6,6 +6,9 @@ module.exports = {
     title: `app-gatsby`,
     siteUrl: `https://app.neptunemutual.com`,
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     "gatsby-plugin-postcss",
     {
