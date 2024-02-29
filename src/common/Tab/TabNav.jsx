@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { Container } from "@/common/Container/Container";
 import { Tab } from "@/common/Tab/Tab";

@@ -6,18 +6,20 @@ import { useCoversAndProducts2 } from "@/src/context/CoversAndProductsData2";
 import { isValidProduct } from "@/src/helpers/cover";
 import { safeFormatBytes32String } from "@/utils/formatter/bytes32String";
 
-export default function CoverPage() {
-  const router = useRouter();
+export default function CoverPage({ pageContext: props }) {
+  const { coverOrProductData, query } = props.data;
+  const { coverId, productId } = query;
+
   const { loading, getProduct, getCoverByCoverKey } = useCoversAndProducts2();
 
-  const { coverId, productId } = router.query;
   const coverKey = safeFormatBytes32String(coverId);
   const productKey = safeFormatBytes32String(productId);
 
   const isDiversifiedProduct = isValidProduct(productKey);
-  const productData = isDiversifiedProduct
-    ? getProduct(coverKey, productKey)
-    : getCoverByCoverKey(coverKey);
+  const productData =
+    (isDiversifiedProduct
+      ? getProduct(coverKey, productKey)
+      : getCoverByCoverKey(coverKey)) || coverOrProductData;
 
   return (
     <main>

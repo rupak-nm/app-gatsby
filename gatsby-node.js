@@ -35,7 +35,6 @@ exports.createPages = async ({ actions }) => {
   const networks = [80001];
   const defaultNetwork = 80001;
 
-  // networks.map(async (network) => {
   for (const network of networks) {
     const data = await getApiData(network);
 
@@ -64,7 +63,7 @@ exports.createPages = async ({ actions }) => {
           component: path.resolve(component + "/cover-terms/index.jsx"),
         },
         {
-          path: urlPath + "new-report",
+          path: urlPath + "/new-report",
           component: path.resolve(component + "/new-report/index.jsx"),
         },
         {
@@ -73,12 +72,18 @@ exports.createPages = async ({ actions }) => {
         },
       ].filter(Boolean);
 
+      const query = {
+        networkId: network,
+        coverId: item.coverKeyString,
+        productId: item.productKeyString,
+      };
+
       pages.forEach((page) => {
         createPage({
           path: page.path,
           component: page.component,
           context: {
-            data: item,
+            data: { coverOrProductData: item, query },
           },
         });
 
@@ -89,7 +94,7 @@ exports.createPages = async ({ actions }) => {
             path: _urlPath,
             component: page.component,
             context: {
-              data: item,
+              data: { coverOrProductData: item, query },
             },
           });
         }

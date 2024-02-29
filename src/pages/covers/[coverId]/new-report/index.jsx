@@ -7,9 +7,10 @@ import { safeFormatBytes32String } from "@/utils/formatter/bytes32String";
 
 const disabled = !isFeatureEnabled("reporting");
 
-export default function ReportingNewCoverPage() {
-  const router = useRouter();
-  const { coverId, productId } = router.query;
+export default function ReportingNewCoverPage({ pageContext: props }) {
+  const { coverOrProductData, query } = props.data;
+  const { coverId, productId } = query;
+
   const coverKey = safeFormatBytes32String(coverId);
   const productKey = safeFormatBytes32String(productId || "");
 
@@ -17,5 +18,11 @@ export default function ReportingNewCoverPage() {
     return <ComingSoon />;
   }
 
-  return <NewIncidentReportPage coverKey={coverKey} productKey={productKey} />;
+  return (
+    <NewIncidentReportPage
+      coverKey={coverKey}
+      productKey={productKey}
+      data={coverOrProductData}
+    />
+  );
 }

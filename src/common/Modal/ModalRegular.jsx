@@ -1,10 +1,5 @@
-import { classNames } from '@/utils/classnames'
-import {
-  Content,
-  Overlay,
-  Portal,
-  Root
-} from '@radix-ui/react-dialog'
+import { classNames } from "@/utils/classnames";
+import { Content, Overlay, Portal, Root } from "@radix-ui/react-dialog";
 
 export const ModalRegular = ({
   isOpen = false,
@@ -12,23 +7,22 @@ export const ModalRegular = ({
   onClose,
   disabled = false,
   rootProps = {},
-  overlayClass = '',
+  overlayClass = "",
   overlayProps = {},
-  defaultContentClassNames = 'fixed z-50 w-full h-full px-4 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-h-90vh flex justify-center items-center',
-  className = '',
+  defaultContentClassNames = "fixed z-50 w-full h-full px-4 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 max-h-90vh flex justify-center items-center",
+  className = "",
   noBlur = false,
+  container = undefined,
   ...rest
 }) => {
+  if (isOpen) console.log(container);
   return (
-    <Root
-      open={isOpen}
-      {...rootProps}
-    >
-      <Portal>
+    <Root open={isOpen} {...rootProps}>
+      <Portal container={container}>
         <Overlay
           className={classNames(
-            'fixed inset-0 z-40 overflow-y-auto bg-black bg-opacity-30',
-            !noBlur && 'backdrop-blur-md',
+            "fixed inset-0 z-40 overflow-y-auto bg-black bg-opacity-30",
+            !noBlur && "backdrop-blur-md",
             overlayClass
           )}
           {...overlayProps}
@@ -40,8 +34,7 @@ export const ModalRegular = ({
         >
           {children}
         </Content>
-
       </Portal>
     </Root>
-  )
-}
+  );
+};

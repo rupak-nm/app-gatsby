@@ -88,11 +88,18 @@ export function TransactionList({ isOpen = false, onClose }) {
     <ModalRegular
       isOpen={isOpen}
       onClose={onClose}
-      rootProps={{ modal: true, onOpenChange: onClose }}
+      rootProps={{ onOpenChange: onClose, modal: true }}
       overlayClass="flex justify-end w-full h-full bg-transparent"
-      defaultContentClassNames="w-screen md:w-auto absolute z-50 transform top-full -right-13 md:-right-10 xl:right-5 px-0 pt-0 md:pt-3 md:rounded-3xl"
+      // className="absolute z-50 w-screen px-0 pt-0 transform md:w-auto top-full -right-13 md:-right-10 xl:right-5 md:pt-3 md:rounded-3xl"
+      defaultContentClassNames="absolute -right-[68px] sm:-right-[76px] md:right-0 z-50 w-screen px-0 pt-0 transform md:w-max h-max top-full md:pt-3 md:rounded-3xl"
       noBlur
       data-testid="transaction-modal"
+      container={
+        typeof window !== "undefined"
+          ? document.getElementById("TxListContainer")
+          : undefined
+      }
+      id="transaction-modal"
     >
       <div className="relative flex flex-col min-h-screen pb-4 pl-8 overflow-hidden md:pl-4 md:min-h-0 bg-3A4557 text-FEFEFF md:rounded-3xl shadow-tx-list md:min-w-416">
         <p className="mt-6 font-bold text-md">Transactions</p>

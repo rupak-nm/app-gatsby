@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { InfoTooltip } from "@/common/Cover/InfoTooltip";
 import { LastSynced } from "@/common/LastSynced";

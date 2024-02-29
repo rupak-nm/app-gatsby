@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import { useRouter } from "@/src/hooks/useRouter";
 
 import { Banner } from "@/common/Banner";
@@ -234,7 +234,7 @@ export const Header = () => {
                 </ConnectWallet>
               </div>
 
-              <div className="relative flex ml-3">
+              <div className="relative flex ml-3" id="TxListContainer">
                 <TransactionOverviewTooltip hide={isTxDetailsPopupOpen}>
                   <button
                     aria-label="Transactions"

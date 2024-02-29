@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { Badge, identifyStatus } from "@/common/CardStatusBadge";
 import { SocialIconLinks } from "@/common/CoverProfileInfo/SocialIconLinks";

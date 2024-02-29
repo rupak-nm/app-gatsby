@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 // import { NeutralButton } from '@/common/Button/NeutralButton'
 import { Container } from "@/common/Container/Container";

@@ -27,16 +27,16 @@ import { classNames } from "@/utils/classnames";
 import { safeFormatBytes32String } from "@/utils/formatter/bytes32String";
 import { Trans } from "@lingui/macro";
 
-export const CoverAddLiquidityDetailsPage = () => {
+export const CoverAddLiquidityDetailsPage = ({ query, coverOrProductData }) => {
   const [acceptedRules, setAcceptedRules] = useState(false);
-  const router = useRouter();
-  const { coverId } = router.query;
+
+  const { coverId } = query;
   const coverKey = safeFormatBytes32String(coverId);
   const productKey = safeFormatBytes32String("");
 
   const { loading, getCoverByCoverKey, getProductsByCoverKey } =
     useCoversAndProducts2();
-  const coverData = getCoverByCoverKey(coverKey);
+  const coverData = getCoverByCoverKey(coverKey) || coverOrProductData;
 
   const {
     info,

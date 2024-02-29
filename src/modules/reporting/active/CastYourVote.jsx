@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { Alert } from "@/common/Alert/Alert";
 import { RegularButton } from "@/common/Button/RegularButton";

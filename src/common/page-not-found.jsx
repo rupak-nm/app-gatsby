@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import { useRouter } from "@/src/hooks/useRouter";
 
 import { Container } from "@/common/Container/Container";

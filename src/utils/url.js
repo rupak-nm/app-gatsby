@@ -6,13 +6,27 @@ function parseSearchAndQueryParams(search, pathname) {
     result[key] = value;
   }
 
-  const matchRegex = /.*\/covers\/([\w_-]+)(\/products\/([\w_-]+))?/gm;
-  const matched = Array.from(pathname.matchAll(matchRegex));
-
+  const coverAndProductIdRegex =
+    /.*\/(covers|reports|my-policies|my-liquidity)\/([\w_-]+)(\/products\/([\w_-]+))?/gm;
+  let matched = Array.from(pathname.matchAll(coverAndProductIdRegex));
   if (matched.length) {
-    const [, coverId, , productId] = matched[0];
+    const [, , coverId, , productId] = matched[0];
     result.coverId = coverId;
     result.productId = productId;
+  }
+
+  const txHashRegex = /\/receipt\/(0x\w+)/gm;
+  matched = Array.from(pathname.matchAll(txHashRegex));
+  if (matched.length) {
+    const [, txHash] = matched[0];
+    result.txHash = txHash;
+  }
+
+  const timestampRegex = /\/incidents\/(\d+)/gm;
+  matched = Array.from(pathname.matchAll(timestampRegex));
+  if (matched.length) {
+    const [, timestamp] = matched[0];
+    result.timestamp = timestamp;
   }
 
   return result;

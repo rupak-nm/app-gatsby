@@ -15,15 +15,15 @@ import { HomeHero } from "@/modules/home/Hero";
 //   loading: () => { return <HomeHeroSkeleton data-testid='hero-skeleton' /> }
 // })
 
-export default function CoverPage() {
-  const router = useRouter();
-  const { coverId, productId } = router.query;
+export default function CoverPage({ pageContext: props }) {
+  const { coverOrProductData, query } = props.data;
+  const { coverId, productId } = query;
 
   const coverKey = safeFormatBytes32String(coverId);
   const productKey = safeFormatBytes32String(productId || "");
 
   const { loading, getCoverByCoverKey } = useCoversAndProducts2();
-  const coverData = getCoverByCoverKey(coverKey);
+  const coverData = getCoverByCoverKey(coverKey) || coverOrProductData;
 
   return (
     <main>

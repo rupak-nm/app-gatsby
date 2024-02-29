@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { classNames } from "@/utils/classnames";
 

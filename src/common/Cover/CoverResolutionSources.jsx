@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { SecondaryCard } from "@/common/SecondaryCard/SecondaryCard";
 import { explainInterval } from "@/utils/formatter/interval";

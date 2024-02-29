@@ -13,15 +13,16 @@ import { CoverReportingRules } from "@/src/modules/reporting/CoverReportingRules
 import { NewIncidentReportForm } from "@/src/modules/reporting/NewIncidentReportForm";
 import { ReportingHero } from "@/src/modules/reporting/ReportingHero";
 
-export function NewIncidentReportPage({ coverKey, productKey }) {
+export function NewIncidentReportPage({ coverKey, productKey, data }) {
   const [accepted, setAccepted] = useState(false);
   const router = useRouter();
 
   const isDiversified = isValidProduct(productKey);
   const { loading, getProduct, getCoverByCoverKey } = useCoversAndProducts2();
-  const coverOrProductData = isDiversified
-    ? getProduct(coverKey, productKey)
-    : getCoverByCoverKey(coverKey);
+  const coverOrProductData =
+    (isDiversified
+      ? getProduct(coverKey, productKey)
+      : getCoverByCoverKey(coverKey)) || data;
 
   const { data: activeReportings } = useFetchCoverProductActiveReportings({
     coverKey,

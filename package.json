@@ -52,7 +52,7 @@
     "react-chartjs-2": "4.0.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.5",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "3.0.0",
     "ua-parser-js": "1.0.33",
     "uuid": "8.3.2"
   },

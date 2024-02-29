@@ -9,9 +9,9 @@ import { safeFormatBytes32String } from "@/utils/formatter/bytes32String";
 
 const disabled = !isFeatureEnabled("liquidity");
 
-export default function CoverAddLiquidityDetails() {
-  const router = useRouter();
-  const { coverId } = router.query;
+export default function CoverAddLiquidityDetails({ pageContext: props }) {
+  const { coverOrProductData, query } = props.data;
+  const { coverId } = query;
   const coverKey = safeFormatBytes32String(coverId);
 
   if (disabled) {
@@ -23,7 +23,10 @@ export default function CoverAddLiquidityDetails() {
       <Seo />
 
       <LiquidityFormsProvider coverKey={coverKey}>
-        <CoverAddLiquidityDetailsPage />
+        <CoverAddLiquidityDetailsPage
+          coverOrProductData={coverOrProductData}
+          query={query}
+        />
       </LiquidityFormsProvider>
     </>
   );

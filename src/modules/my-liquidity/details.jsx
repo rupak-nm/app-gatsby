@@ -23,7 +23,7 @@ import { convertFromUnits } from "@/utils/bn";
 import { formatCurrency } from "@/utils/formatter/currency";
 import { Trans } from "@lingui/macro";
 
-export const ProvideLiquidityToCover = ({ coverKey, productKey }) => {
+export const ProvideLiquidityToCover = ({ coverKey, productKey, data }) => {
   const router = useRouter();
   const { liquidityTokenDecimals } = useAppConstants();
 
@@ -36,7 +36,7 @@ export const ProvideLiquidityToCover = ({ coverKey, productKey }) => {
     isWithdrawalWindowOutdated,
     updateWithdrawalWindow,
   } = useLiquidityFormsContext();
-  const coverData = getCoverByCoverKey(coverKey);
+  const coverData = getCoverByCoverKey(coverKey) || data;
 
   if (loading) {
     return <CoverLiquiditySkeleton />;

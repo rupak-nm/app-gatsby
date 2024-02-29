@@ -7,26 +7,28 @@ import { isValidProduct } from "@/src/helpers/cover";
 import { CoverOptionsPage } from "@/src/modules/cover/CoverOptionsPage";
 import { safeFormatBytes32String } from "@/utils/formatter/bytes32String";
 
-export default function Options() {
-  const router = useRouter();
-  const { coverId, productId } = router.query;
+export default function Options({ pageContext: props }) {
+  const { coverOrProductData, query } = props.data;
+  const { coverId, productId } = query;
+
   const coverKey = safeFormatBytes32String(coverId);
   const productKey = safeFormatBytes32String(productId || "");
 
   const { loading, getProduct } = useCoversAndProducts2();
-  const productData = getProduct(coverKey, productKey);
+  const productData = getProduct(coverKey, productKey) || coverOrProductData;
 
   return (
-    <main>
+    <>
       <Seo />
-
-      <Content
-        loading={loading}
-        productData={productData}
-        coverKey={coverKey}
-        productKey={productKey}
-      />
-    </main>
+      <main>
+        <Content
+          loading={loading}
+          productData={productData}
+          coverKey={coverKey}
+          productKey={productKey}
+        />
+      </main>
+    </>
   );
 }
 

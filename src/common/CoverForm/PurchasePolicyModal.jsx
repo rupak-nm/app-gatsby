@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import { useRouter } from "@/src/hooks/useRouter";
 
 import { Loader } from "@/common/Loader/Loader";

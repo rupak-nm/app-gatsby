@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { Divider } from "@/common/Divider/Divider";
 import { Loading, NoDataFound } from "@/common/Loading";

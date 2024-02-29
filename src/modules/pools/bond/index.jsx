@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import { useRouter } from "@/src/hooks/useRouter";
 
 import { RegularButton } from "@/common/Button/RegularButton";

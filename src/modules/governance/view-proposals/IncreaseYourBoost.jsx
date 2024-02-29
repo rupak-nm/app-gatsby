@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { GaugeChartSemiCircle } from "@/common/GaugeChart/GaugeChartSemiCircle";
 import { Routes } from "@/src/config/routes";

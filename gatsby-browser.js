@@ -1,8 +1,12 @@
+import "@fontsource/inter/latin.css";
+import "./src/common/GaugeChart/GaugeChart.css";
+import "./src/common/GaugeChart/GaugeChartSemiCircle.css";
+import "./src/styles/global.css";
+
 import React from "react";
 import { Web3ReactProvider } from "@web3-react/core";
 import { getLibrary } from "./lib/connect-wallet/utils/web3";
 import { DEFAULT_VARIANT } from "./src/config/toast";
-import "./src/styles/global.css";
 import { NetworkProvider } from "./src/context/Network";
 import { AppConstantsProvider } from "./src/context/AppConstants";
 import { CoversAndProductsProvider2 } from "./src/context/CoversAndProductsData2";
@@ -41,11 +45,11 @@ const Wrappers = ({ children }) => {
 };
 
 export const wrapRootElement = ({ element }) => (
-  <CookiesProvider>
-    <ErrorBoundary>
-      <LanguageProvider>
+  <LanguageProvider>
+    <CookiesProvider>
+      <ErrorBoundary>
         <Wrappers>{element}</Wrappers>
-      </LanguageProvider>
-    </ErrorBoundary>
-  </CookiesProvider>
+      </ErrorBoundary>
+    </CookiesProvider>
+  </LanguageProvider>
 );

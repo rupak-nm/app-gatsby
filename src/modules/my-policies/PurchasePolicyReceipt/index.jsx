@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import { useRouter } from "@/src/hooks/useRouter";
 
 import { Alert } from "@/common/Alert/Alert";

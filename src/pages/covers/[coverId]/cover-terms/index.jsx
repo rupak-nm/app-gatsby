@@ -6,15 +6,16 @@ import { SingleCoverTermsPage } from "@/modules/cover/cover-terms/SingleCoverTer
 import { useCoversAndProducts2 } from "@/src/context/CoversAndProductsData2";
 import { safeFormatBytes32String } from "@/utils/formatter/bytes32String";
 
-export default function CoverTermsPage() {
-  const router = useRouter();
+export default function CoverTermsPage({ pageContext: props }) {
+  const { coverOrProductData, query } = props.data;
+  const { coverId } = query;
+
   const { loading, getCoverByCoverKey, getProductsByCoverKey } =
     useCoversAndProducts2();
 
-  const { coverId } = router.query;
   const coverKey = safeFormatBytes32String(coverId);
 
-  const coverData = getCoverByCoverKey(coverKey);
+  const coverData = getCoverByCoverKey(coverKey) || coverOrProductData;
   const isDiversified = coverData?.supportsProducts;
 
   return (

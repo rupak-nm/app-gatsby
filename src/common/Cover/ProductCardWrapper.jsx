@@ -1,4 +1,4 @@
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { ProductCard } from "@/common/Cover/ProductCard";
 import { CardSkeleton } from "@/common/Skeleton/CardSkeleton";

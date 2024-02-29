@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import { useRouter } from "@/src/hooks/useRouter";
 
 import { Checkbox } from "@/common/Checkbox/Checkbox";

@@ -7,7 +7,7 @@ module.exports = {
     siteUrl: `https://app.neptunemutual.com`,
   },
   flags: {
-    DEV_SSR: true,
+    // DEV_SSR: true,
   },
   plugins: [
     "gatsby-plugin-postcss",
